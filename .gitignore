@@ -1,0 +1,12 @@
+# Configuration files
+*config*
+*settings*
+*.env*
+*.cfg
+*.conf
+*.ini
+*.properties
+*.yml
+*.yaml
+!build.yml
+scanbox.json
