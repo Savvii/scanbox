@@ -3,9 +3,9 @@ Do not access external directories. `external_directory`
 
 ## Preparation
 
-**Identify frameworks and libraries**: Check dependencies (through `composer.json`, `package.json`,...), directory structure, and namespace patterns to determine what/if frameworks are in use.
-**Map abstraction layers**
-**Document your findings**: Keep track of the patterns you discover, as vulnerabilities might flow through these abstractions.
+- **Identify frameworks and libraries**: Check dependencies (through `composer.json`, `package.json`,...), directory structure, and namespace patterns to determine what/if frameworks are in use.
+- **Map abstraction layers**
+- **Document your findings**: Keep track of the patterns you discover, as vulnerabilities might flow through these abstractions.
 
 ## Scope
 
