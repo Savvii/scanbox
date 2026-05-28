@@ -1,5 +1,8 @@
 # Scanbox
 
+[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-Scanbox-blue?logo=github)](https://github.com/marketplace/actions/scanbox-security-audit) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Savvii/scanbox)](https://github.com/Savvii/scanbox/releases)
+
+
 A Docker-based tool for automated security auditing of codebases using AI-powered analysis.
 
 ## Description
@@ -16,6 +19,59 @@ The tool is designed to be lightweight, running in a Docker container, and confi
 - **Structured Output**: Generates a JSON report with CVSS scores, file locations, and code snippets.
 - **Configurable**: Supports multiple AI providers via configuration files.
 - **Scope Filtering**: Reports only directly exploitable vulnerabilities on default configurations without authentication.
+
+## GitHub Actions
+
+Add the scanbox action to any workflow to run automated security audits on every push or pull request.
+
+```yaml
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run security audit
+        uses: Savvii/scanbox@v0.0.1
+        with:
+          code-dir: .
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          openai-base-url: https://my-openai-compatible-tool.com
+
+      - name: Upload audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: scanbox-report
+          path: scanbox.json
+```
+
+### With a custom prompt
+
+```yaml
+- name: Run security audit
+  uses: Savvii/scanbox@v0.0.1
+  with:
+    code-dir: .
+    openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+    custom-prompt: my-custom-prompt.md
+```
+
+#### Action inputs
+
+| Input | Required | Default | Description |
+|-------|----------|---------|-------------|
+| `code-dir` | Yes | — | Directory containing the code to audit |
+| `openai-api-key` | No | — | API key for OpenAI or compatible provider |
+| `openai-base-url` | No | — | Base URL for a compatible API endpoint |
+| `custom-prompt` | No | — | Path to a custom `prompt.md` file |
+| `model` | No | `gpt-4o` | Model name to use for auditing |
+
+
+#### Action outputs
+
+| Output | Description |
+|--------|-------------|
+| `scan-file` | Path to the generated `scanbox.json` file |
 
 ## Prerequisites
 
