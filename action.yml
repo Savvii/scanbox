@@ -1,0 +1,41 @@
+name: "Scanbox Security Audit"
+description: "AI-powered security vulnerability auditing for your codebase. Detects RCE, SQLi, XSS, Auth Bypass, and more via OpenCode."
+branding:
+  icon: "shield"
+  color: "red"
+
+inputs:
+  code-dir:
+    description: "Directory containing the code to audit"
+    required: true
+  openai-api-key:
+    description: "API key for the AI provider"
+    required: false
+  openai-base-url:
+    description: "Base URL for a compatible API provider (e.g. https://my-resource.openai.azure.com)"
+    required: false
+  custom-prompt:
+    description: "Path to a custom prompt.md file"
+    required: false
+  model:
+    description: "Model name to use for auditing"
+    required: false
+    default: "gpt-4o"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run scanbox audit
+      shell: bash
+      env:
+        INPUT_CODE-DIR: ${{ inputs.code-dir }}
+        INPUT_OPENAI-API-KEY: ${{ inputs.openai-api-key }}
+        INPUT_OPENAI-BASE-URL: ${{ inputs.openai-base-url }}
+        INPUT_CUSTOM-PROMPT: ${{ inputs.custom-prompt }}
+        INPUT_MODEL: ${{ inputs.model }}
+      run: ${{ github.action_path }}/entrypoint.sh
+
+outputs:
+  scan-file:
+    description: "Path to the generated scanbox.json file"
+    value: ${{ github.action_path }}/scanbox.json
