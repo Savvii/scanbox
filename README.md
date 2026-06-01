@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run security audit
-        uses: Savvii/scanbox@v0.0.1
+        uses: Savvii/scanbox@1.0.5
         with:
           code-dir: .
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -49,7 +49,7 @@ jobs:
 
 ```yaml
 - name: Run security audit
-  uses: Savvii/scanbox@v0.0.1
+  uses: Savvii/scanbox@1.0.5
   with:
     code-dir: .
     openai-api-key: ${{ secrets.OPENAI_API_KEY }}
