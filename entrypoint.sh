@@ -23,7 +23,7 @@ DOCKER_ARGS=("-v" "$CODE_DIR:/app")
 
 if [ -n "$OPENAI_API_KEY" ]; then
     if [ -n "$OPENAI_BASE_URL" ]; then
-        CONFIG_JSON=$(printf '{"$schema":"https://opencode.ai/config.json","provider":{"openai-compatible":{"npm":"@ai-sdk/openai-compatible","options":{"baseURL":"%s","apiKey":"%s"},"models":{"%s":{"name":"%s"}}}}}' "$OPENAI_BASE_URL" "$OPENAI_API_KEY" "$MODEL" "$MODEL")
+        CONFIG_JSON=$(printf '{"$schema":"https://opencode.ai/config.json","provider":{"openai-compatible":{"npm":"@ai-sdk/openai-compatible","options":{"baseURL":"%s/v1","apiKey":"%s"},"models":{"%s":{"name":"%s"}}}}}' "$OPENAI_BASE_URL" "$OPENAI_API_KEY" "$MODEL" "$MODEL")
     else
         CONFIG_JSON=$(printf '{"$schema":"https://opencode.ai/config.json","provider":{"openai-compatible":{"npm":"@ai-sdk/openai-compatible","options":{"baseURL":"https://api.openai.com/v1","apiKey":"%s"},"models":{"%s":{"name":"%s"}}}}}' "$OPENAI_API_KEY" "$MODEL" "$MODEL")
     fi
