@@ -62,7 +62,7 @@ jobs:
 |-------|----------|---------|-------------|
 | `code-dir` | Yes | — | Directory containing the code to audit |
 | `openai-api-key` | No | — | API key for OpenAI or compatible provider |
-| `openai-base-url` | No | — | Base URL for a compatible API endpoint |
+| `openai-base-url` | No | — | Base URL for a compatible API endpoint (include /v1 if needed) |
 | `custom-prompt` | No | — | Path to a custom `prompt.md` file |
 | `model` | No | `gpt-4o` | Model name to use for auditing |
 
