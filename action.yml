@@ -28,10 +28,10 @@ runs:
     - name: Run scanbox audit
       shell: bash
       env:
-        INPUT_CODE-DIR: ${{ inputs.code-dir }}
-        INPUT_OPENAI-API-KEY: ${{ inputs.openai-api-key }}
-        INPUT_OPENAI-BASE-URL: ${{ inputs.openai-base-url }}
-        INPUT_CUSTOM-PROMPT: ${{ inputs.custom-prompt }}
+        INPUT_CODE_DIR: ${{ inputs.code-dir }}
+        INPUT_OPENAI_API_KEY: ${{ inputs.openai-api-key }}
+        INPUT_OPENAI_BASE_URL: ${{ inputs.openai-base-url }}
+        INPUT_CUSTOM_PROMPT: ${{ inputs.custom-prompt }}
         INPUT_MODEL: ${{ inputs.model }}
       run: ${{ github.action_path }}/entrypoint.sh
 
