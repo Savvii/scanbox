@@ -1,5 +1,4 @@
-Audit the files in `/app`. Do not edit any files aside from the `scanbox.json`.
-Do not access external directories. `external_directory`
+Audit the files in this directory. Do not edit any files aside from the `scanbox.json`.
 
 ## Preparation
 
